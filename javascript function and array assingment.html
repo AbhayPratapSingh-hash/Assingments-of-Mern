@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions and Arrays</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+            margin: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            background: #f4f4f4;
+            margin: 5px auto;
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Directory</h2>
+
+    <input type="text" id="searchInput" placeholder="Enter name to search...">
+    <button onclick="searchName()">Search</button>
+    <button onclick="displayAll()">Show All</button>
+
+    <ul id="studentList"></ul>
+
+    <script>
+        const students = ["Gojo", "Kakashi", "Goku ", "Eren ", "Eve"];
+
+        function displayList(namesToDisplay) {
+            const listElement = document.getElementById("studentList");
+            listElement.innerHTML = "";
+
+            if (namesToDisplay.length === 0) {
+                listElement.innerHTML = "<li>No students found</li>";
+                return;
+            }
+
+            namesToDisplay.forEach(name => {
+                const li = document.createElement("li");
+                li.textContent = name;
+                listElement.appendChild(li);
+            });
+        }
+
+        function searchName() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            
+            const filteredStudents = students.filter(student => 
+                student.toLowerCase().includes(query)
+            );
+
+            displayList(filteredStudents);
+        }
+
+        function displayAll() {
+            document.getElementById("searchInput").value = "";
+            displayList(students);
+        }
+
+        displayList(students);
+    </script>
+
+</body>
+</html>
