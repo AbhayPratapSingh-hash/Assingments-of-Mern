@@ -1,0 +1,66 @@
+/* Basic styles for product-app */
+
+:root{
+  --bg: #f7f7fb;
+  --card: #ffffff;
+  --muted: #666;
+  --accent: #2563eb;
+  --border: #e5e7eb;
+}
+
+html,body,#root{
+  height:100%;
+}
+
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:20px;
+}
+
+h1{
+  margin:0 0 16px 0;
+  font-size:1.6rem;
+}
+
+.product-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  margin:12px 0;
+  box-shadow:0 1px 2px rgba(16,24,40,0.04);
+  max-width:480px;
+}
+
+.product-name{font-size:1.1rem;margin:0 0 6px 0}
+.product-price{color:var(--muted);margin:0 0 12px 0}
+.product-subtotal{margin-top:12px}
+
+.quantity-row{display:inline-flex;align-items:center;background:transparent;border-radius:6px}
+.qty-btn{
+  background:transparent;
+  border:1px solid var(--border);
+  padding:6px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  color:var(--accent);
+}
+.qty-btn:hover{background:#f3f4f6}
+.qty-value{min-width:28px;text-align:center;display:inline-block;margin:0 8px}
+
+/* Responsive grid if you later wrap products */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:12px;
+}
+
+@media (max-width:480px){
+  .product-card{padding:12px}
+  h1{font-size:1.3rem}
+}
