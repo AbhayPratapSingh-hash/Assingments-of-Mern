@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Generator</title>
+    <style>
+        .container {
+            background-color: #eee; 
+            height: 700px;
+            width: 600px;
+            margin-top: 20px;
+            padding: 10px; 
+            border: 1px solid #333;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+        
+        .shape {
+            display: inline-block;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .square {
+            width: 150px;
+            height: 150px;
+        }
+
+        .rectangle {
+            width: 200px;
+            height: 100px;
+        }
+
+        .controls {
+            margin-bottom: 10px;
+        }
+
+        .controls input, .controls button {
+            padding: 8px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <input type="number" 
+            name="quantity"
+            id="quantityInput"
+            placeholder="Enter quantity"
+            min="1"
+            value="1" />
+            
+        <input type="text"
+            name="shapename"
+            id="shapename"
+            placeholder="Shape (circle, square, rectangle)" />
+            
+        <input type="color"
+            name="shapecolor"
+            id="shapecolor"
+            value="#ff0000" /> <button id="generate">Generate Shapes</button>
+        <button id="clear">Clear Container</button>
+    </div>
+
+    <div class="container"></div> 
+
+    <script>
+        const generateButton = document.querySelector("#generate");
+        const clearButton = document.querySelector("#clear");
+        const quantityInput = document.querySelector("#quantityInput");
+        const shapeNameInput = document.querySelector("#shapename");
+        const shapeColorInput = document.querySelector("#shapecolor");
+        const container = document.querySelector(".container");
+
+        
+        const generateShapes = () => {
+            
+            const quantity = parseInt(quantityInput.value, 10); 
+            if (isNaN(quantity) || quantity <= 0) {
+                alert("Please enter a valid quantity (a positive number).");
+                return;
+            }
+
+            const shapeName = shapeNameInput.value.toLowerCase().trim();
+            const shapeColor = shapeColorInput.value;
+
+            const validShapes = ['circle', 'square', 'rectangle'];
+            if (!validShapes.includes(shapeName)) {
+                alert("Please enter a valid shape name: circle, square, or rectangle.");
+                return;
+            }
+
+            for (let i = 0; i < quantity; i++) {
+                let shape = document.createElement("div");
+                
+                shape.classList.add('shape', shapeName); 
+                
+                shape.style.backgroundColor = shapeColor;
+                
+                container.appendChild(shape);
+            }
+        };
+
+        const clearContainer = () => {
+            container.innerHTML = '';
+        };
+
+        generateButton.addEventListener("click", generateShapes);
+        clearButton.addEventListener("click", clearContainer);
+    </script>
+</body> 
+</html>

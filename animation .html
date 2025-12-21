@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 500px;
+            height: 500px;
+            background-color: bisque;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .ball{
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: red;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         animation-name: jump;
+         animation-duration: 2s;
+         animation-iteration-count: infinite;
+         animation-timing-function: ease-in-out;
+        }
+        @keyframes jump{
+            0%{
+                transform: translateY(0px);
+            }
+            25%{
+                transform: translateY(-200px);
+background-color: black;
+            }
+            50%{
+                transform: translateY();
+                background-color: yellow;
+            }
+            100%{
+                transform: translateX(-200px);
+                background-color: blueviolet;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ball"> IND VS WI</div>
+    </div>
+</body>
+</html>
